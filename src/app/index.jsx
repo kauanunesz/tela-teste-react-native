@@ -3,18 +3,21 @@ import
 Text, StyleSheet, 
 ScrollView, KeyboardAvoidingView, Platform}
 from 'react-native';
-import {Input} from './components/Input';
-import {Button} from './components/Button'
+import {Input} from '../components/Input';
+import {Button} from '../components/Button';
+import {Link, router} from 'expo-router';
 
 export default function MeuApp()
 {
   return(
     <KeyboardAvoidingView 
+    // Função para, ao abrir o teclado, o aplicativo acompanhar e dar uma experiência melhor ao usuário. Funciona junto a propriedade behavior. Comportamento diferente em android e IoS
     style={{flex: 1}}
     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        
       <ScrollView style={styles.container}>
         <Image 
-          source={require('./assets/logo.jpg')}
+          source={require('../assets/logo.jpg')}
           style={styles.imagem} 
         />
         <Text style={styles.titulo}>Entrar</Text>
@@ -24,7 +27,7 @@ export default function MeuApp()
           <Input placeholder="Senha" secureTextEntry/>
           <Button label="Entrar" activeOpacity={0.7}/>
           <Text>Não tem uma conta? </Text>  
-          <Button label="Cadastre-se" activeOpacity={0.7}/>  
+          <Button onPress={() => router.push('/cadastro')} label="Cadastre-se" activeOpacity={0.7} />  
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

@@ -1,6 +1,7 @@
 import {TextInput, StyleSheet} from 'react-native'
 
 export function Input({...rest})
+// ...rest funciona para fazer a função/componente aceitar toda e qualquer propriedade, para não precisar importar cada propriedade, ou criar um tipo somente para ela; 
 {
     return <TextInput style={styles.input} {...rest} />
 }
